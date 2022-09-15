@@ -5,6 +5,7 @@ import com.Biblioteca.Prestamos.Servicios.libroServicio;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -18,7 +19,7 @@ public class libroControlador {
     }
 
     @GetMapping("/ListarLibros")
-    public ArrayList<Libro> listar(){
+    public List<Libro> listar(){
         return servicio.listarLibros();
     }
 

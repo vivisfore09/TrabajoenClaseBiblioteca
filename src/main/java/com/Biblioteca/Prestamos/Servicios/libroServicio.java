@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -19,8 +20,8 @@ public class libroServicio {
         this.repositorio = repositorio;
     }
 
-    public ArrayList<Libro> listarLibros(){ //Consultar Todos
-        return (ArrayList<Libro>) repositorio.findAll();
+    public List<Libro> listarLibros(){ //Consultar Todos
+        return  repositorio.findAll();
     }
 
     public Optional<Libro> buscarLibro(String isbn){
