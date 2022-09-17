@@ -1,0 +1,29 @@
+div{
+background-color:red;
+}
+
+.cajita{
+background-color:blue;
+color:orange;
+}
+
+#cajita{
+ background-color:green;
+ width:80%;
+ height:50%;
+ margin-top:100px;
+ margin-left:100Px;
+ margin-bottom:100px;
+ padding: 20px;
+ color:black;
+ border-radius: 15px;
+ }
+
+.tabla{
+border-collapse:separate;
+border: red 5px solid;
+}
+
+td{
+border: blue 3px solid;
+}
