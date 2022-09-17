@@ -50,8 +50,12 @@
             <td th:text="${libro.autor}"></td>
             <td th:text="${libro.editorial}"></td>
             <td th:text="${libro.no_page}"></td>
-            <td><button type="button" class="btn btn-warning">Editar</button></td>
-            <td><button type="button" class="btn btn-danger">Eliminar</button></td>
+            <td>
+                <a th:href="@{/editarLibro/{isbn}(isbn=${libro.isbn})}"><button type="button" class="btn btn-warning">Editar</button>
+                </a>
+                </td>
+            <td><a th:href="@{/eliminarLibro/{isbn}(isbn=${libro.isbn})}">
+                <button type="button" class="btn btn-danger">Eliminar</button></a></td>
         </tr>
 
     </table>

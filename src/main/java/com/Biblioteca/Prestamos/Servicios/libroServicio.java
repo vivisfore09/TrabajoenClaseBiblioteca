@@ -28,6 +28,10 @@ public class libroServicio {
         return repositorio.findById(isbn);
     }
 
+    public Libro buscarLibro1(String isbn){
+        return repositorio.findById(isbn).get();
+    }
+
     public ArrayList<Libro> buscarAutor(String autor){
         return repositorio.findByAutor(autor);
     }

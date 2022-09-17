@@ -44,4 +44,18 @@ public class vistaLibroControlador {
     servicio.agregarLibro(libro);
     return "redirect:/Libros";
     }
+
+    @GetMapping("/editarLibro/{isbn}")
+    public String pasarLibro(@PathVariable("isbn") String isbn,Model model){
+        model.addAttribute("libro",servicio.buscarLibro1(isbn));
+        return "editarLibro";
+    }
+
+    @GetMapping("/eliminarLibro/{isbn}")
+    public String eliminarLibro(@PathVariable("isbn") String isbn,Model model){
+        servicio.eliminarLibro(isbn);
+        return "redirect:/Libros";
+    }
+
+
 }
