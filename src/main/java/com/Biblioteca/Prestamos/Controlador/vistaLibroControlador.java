@@ -5,7 +5,9 @@ import com.Biblioteca.Prestamos.Servicios.libroServicio;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -33,7 +35,13 @@ public class vistaLibroControlador {
 
     @GetMapping("/formLibro")
     public String mostrarFormulario(Model model){
-       // model.addAttribute()
+        model.addAttribute("libro",new Libro());
         return "registrarLibro";
+    }
+
+    @PostMapping("/RegistrarLibro")
+    public String agregarLibro(@ModelAttribute("libro") Libro libro){
+    servicio.agregarLibro(libro);
+    return "redirect:/Libros";
     }
 }

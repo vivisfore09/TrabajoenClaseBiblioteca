@@ -7,6 +7,40 @@
     <title>Registrar Libro</title>
 </head>
 <body>
+<div class="container col-4 aling-center mt-5">
+    <h2 class="display-4 text-success text-center mb-5">Registrar Libro</h2>
+    <form  th:action="@{/RegistrarLibro}" th:object="${libro}" method="post">
+        <div class="mb-3">
+            <label for="isbn" class="form-label">Codigo Isbn del Libro</label>
+            <input type="text" class="form-control" id="isbn" aria-describedby="emailHelp" placeholder="Isbn01" th:field="*{isbn}" required pattern="[Isbn0-9]+" minlength="6" maxlength="8">
+        </div>
+        <div class="mb-3">
+            <label for="titulo" class="form-label">Titulo</label>
+            <input type="text" class="form-control" id="titulo" aria-describedby="emailHelp" th:field="*{titulo}" required pattern="[a-zA-Z., ]+" title="Por favor, digite solo letras.">
+        </div>
+        <div class="mb-3">
+            <label for="autor" class="form-label">Autor</label>
+            <input type="text" class="form-control" id="autor" aria-describedby="emailHelp" th:field="*{autor}" required>
+        </div>
+        <div class="mb-3">
+            <label for="editorial" class="form-label">Editorial</label>
+            <select class="form-select" id="editorial" th:field="*{editorial}" aria-label="Default select example">
+                <option value="Sin Editorial" selected>Seleccionar</option>
+                <option value="Norma">Norma</option>
+                <option value="Planeta">Planeta</option>
+                <option value="Otra">Otra</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="pag" class="form-label">No Paginas</label>
+            <input type="number" class="form-control" id="pag" th:field="*{no_page}" min="0" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text">Antes de enviar, ingrese todos los datos.</div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Registrar Libro</button>
+    </form>
+
+</div>
 
 </body>
 </html>
