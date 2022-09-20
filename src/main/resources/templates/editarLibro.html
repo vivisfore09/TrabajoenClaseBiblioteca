@@ -12,7 +12,7 @@
     <form  th:action="@{/guardarEditado/{isbn}(isbn=${libro.isbn})}" th:object="${libro}" method="post">
         <div class="mb-3">
             <label for="isbn" class="form-label">Codigo Isbn del Libro</label>
-            <input type="text" class="form-control" id="isbn" aria-describedby="emailHelp" placeholder="Isbn01" th:field="*{isbn}" required pattern="[Isbn0-9]+" minlength="6" maxlength="8">
+            <input type="text" class="form-control" id="isbn" aria-describedby="emailHelp" placeholder="Isbn01" th:field="*{isbn}" disabled>
         </div>
         <div class="mb-3">
             <label for="titulo" class="form-label">Titulo</label>

@@ -36,12 +36,12 @@ public class libroServicio {
         return repositorio.findByAutor(autor);
     }
 
-    public String agregarLibro(Libro libro){
+    public boolean agregarLibro(Libro libro){
         if(!buscarLibro(libro.getIsbn()).isPresent()) {
             repositorio.save(libro);
-            return "Libro Registrado exitosamente.";
+            return true;
         }else{
-           return "El libro ya existe. " ;
+           return false;
         }
     }
 

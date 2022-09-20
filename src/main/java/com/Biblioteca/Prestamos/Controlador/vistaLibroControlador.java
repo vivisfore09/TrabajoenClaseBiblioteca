@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -40,9 +41,13 @@ public class vistaLibroControlador {
     }
 
     @PostMapping("/RegistrarLibro")
-    public String agregarLibro(@ModelAttribute("libro") Libro libro){
-    servicio.agregarLibro(libro);
-    return "redirect:/Libros";
+    public String agregarLibro(@ModelAttribute("libro") Libro libro, Model model, RedirectAttributes attributes){
+        if(servicio.agregarLibro(libro)) {
+            attributes.addFlashAttribute("mensajeOk","Libro registrado exitosamente.");
+        }else{
+            attributes.addFlashAttribute("error","Error, el libro no se registro.");
+        }
+        return "redirect:/Libros";
     }
 
     @GetMapping("/editarLibro/{isbn}")
@@ -57,5 +62,15 @@ public class vistaLibroControlador {
         return "redirect:/Libros";
     }
 
+    @PostMapping("/guardarEditado/{isbn}")
+    public String actualizarLibro(@PathVariable("isbn") String isbn, @ModelAttribute("libro") Libro libro,Model model){
+        Libro lib=servicio.buscarLibro1(isbn);
+        lib.setTitulo(libro.getTitulo());
+        lib.setAutor(libro.getAutor());
+        lib.setEditorial(libro.getEditorial());
+        lib.setNo_page(libro.getNo_page());
+        servicio.actualizarLibro(lib);
+        return "redirect:/Libros";
+    }
 
 }

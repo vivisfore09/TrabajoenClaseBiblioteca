@@ -33,10 +33,10 @@ public class libroControlador {
         return servicio.buscarAutor(autor);
     }
 
-    @PostMapping("/AgregarLibro")
+   /* @PostMapping("/AgregarLibro")
     public String agregarLibro(@RequestBody Libro libro){
         return servicio.agregarLibro(libro);
-    }
+    }*/
 
     @PutMapping("/ActualizarLibro")
     public String actualizarLibro(@RequestBody Libro libro){
