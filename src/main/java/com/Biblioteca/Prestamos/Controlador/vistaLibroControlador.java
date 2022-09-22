@@ -2,6 +2,8 @@ package com.Biblioteca.Prestamos.Controlador;
 
 import com.Biblioteca.Prestamos.Entidades.Libro;
 import com.Biblioteca.Prestamos.Servicios.libroServicio;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +21,12 @@ public class vistaLibroControlador {
 
     public vistaLibroControlador(libroServicio servicio) {
         this.servicio = servicio;
+    }
+
+
+    @GetMapping("/")
+    public String index(Model model, @AuthenticationPrincipal OidcUser principal){
+    return "index";
     }
 
     @GetMapping("/Prueba/{nombre}")
