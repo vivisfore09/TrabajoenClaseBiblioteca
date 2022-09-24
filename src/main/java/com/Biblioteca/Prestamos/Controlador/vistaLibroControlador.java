@@ -1,7 +1,9 @@
 package com.Biblioteca.Prestamos.Controlador;
 
 import com.Biblioteca.Prestamos.Entidades.Libro;
+import com.Biblioteca.Prestamos.Entidades.Usuario;
 import com.Biblioteca.Prestamos.Servicios.libroServicio;
+import com.Biblioteca.Prestamos.Servicios.usuarioServicio;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.stereotype.Controller;
@@ -18,15 +20,29 @@ import java.util.List;
 public class vistaLibroControlador {
 
     libroServicio servicio;
+    usuarioServicio usuServicio;
 
-    public vistaLibroControlador(libroServicio servicio) {
+    public vistaLibroControlador(libroServicio servicio, usuarioServicio usuServicio) {
         this.servicio = servicio;
+        this.usuServicio = usuServicio;
     }
-
 
     @GetMapping("/")
     public String index(Model model, @AuthenticationPrincipal OidcUser principal){
-    return "index";
+        if(principal != null){
+        Usuario user=usuServicio.existeUsuario(principal.getClaims());
+        if(user.getNick().equals("vivisfore")){
+            System.out.println("Es administrador");
+            model.addAttribute("user",user);
+            return "index";
+        }else{
+        model.addAttribute("user",user);
+        //System.out.println(principal.getClaims());
+            return "Administrador";
+        }
+
+    }
+        return "index";
     }
 
     @GetMapping("/Prueba/{nombre}")

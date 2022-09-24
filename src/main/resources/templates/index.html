@@ -22,6 +22,13 @@
                 <li class="nav-item">
                     <a class="nav-link">Prestamos</a>
                 </li>
+                    <li class="nav-item" th:text="${user.getNick()}"></li>
+                    <li class="nav-item" th:text="${user.getEmail()}"></li>
+                    <li class="nav-item">
+                        <form th:action="@{/logout}" method="post">
+                            <button class="btn btn-success">Cerrar Sesion</button>
+                        </form>
+                    </li>
                 </div>
                 <li class="nav-item" sec:authorize="!isAuthenticated()">
                     <a class="nav-link" th:href="@{/oauth2/authorization/auth0}">Ingresar</a>
