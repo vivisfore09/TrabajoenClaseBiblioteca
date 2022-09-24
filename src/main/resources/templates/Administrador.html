@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Sesion Estudiante</h1>
+<ul>
+    <li class="nav-item" th:text="${user.getNick()}"></li>
+    <li class="nav-item" th:text="${user.getEmail()}"></li>
+    <form th:action="@{/logout}" method="post">
+        <button class="btn btn-success">Cerrar Sesion</button>
+    </form>
+</ul>
+</body>
+</html>
